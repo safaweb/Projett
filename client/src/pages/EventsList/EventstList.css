@@ -1,0 +1,148 @@
+.body {
+  margin: 0px auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Poppins", sans-serif;
+	font-weight: 300;
+	font-size: 15px;
+	line-height: 1.7;
+	overflow-x: hidden;
+  background: #f6f5f7;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	height: 100vh;
+}
+
+.containerE {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+		0 10px 10px rgba(0, 0, 0, 0.22);
+	position: relative;
+	overflow: hidden;
+	width: 900px;
+	max-width: 100%;
+	min-height: 450px;
+ display: flex;
+ margin: 20px 0;
+ justify-content: center;
+ align-items: center;
+}
+
+.containern {
+	background-color: #fff;
+	border-radius: 10px;
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+		0 10px 10px rgba(0, 0, 0, 0.22);
+	position: relative;
+	overflow: hidden;
+ padding: 20px;
+	width: 900px;
+	max-width: 100%;
+	min-height: 450px;
+ display: flex;
+ margin: 20px 0;
+ justify-content: center;
+ align-items: center;
+}
+
+.containerm {
+ height: 450px;
+ width: 50px;
+}
+
+.containerw{
+ height:320px;
+ width: 150px;
+}
+
+.containerx{
+ height: 25px;
+ width: 5px;
+}
+
+.containerv{
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding:  30px 50px 30px 50px;
+	height: 100%;
+ text-align: center;
+}
+
+
+.left {
+ flex: 1;
+float: left;
+	border-radius: 10px;
+	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.068),
+		0 10px 10px rgba(0, 0, 0, 0.075);
+	position: relative;
+	overflow: hidden;
+}
+
+.left img {
+ width: 300px;
+ height: 300px;
+object-fit: cover;
+}
+
+.titreE {
+	font-weight: bold;
+	margin: 10px ;
+ padding: 10px ;
+	color: rgba(91, 74, 239, 0.432);
+}
+
+.formE {
+	background-color: #ffffff;
+ display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	padding:  50px;
+	height: 100%;
+ width: 450px;
+	text-align: center;
+}
+
+.inputE {
+	background-color: rgba(238, 238, 238, 0.301);
+	border: none;
+	padding: 10px;
+ margin: 8px;
+	width: 100%;
+ border-radius: 30px;
+}
+.inputE[type=text]:focus {
+  background-color: rgba(181, 184, 185, 0.205);
+}
+
+.buttonE {
+	border-radius: 30px;
+	border: 1px solid #eeecf0;
+	background-color: #ffffff;
+	color: rgba(91, 74, 239, 0.432);
+	font-size: 12px;
+	font-weight: bold;
+	padding: 10px 30px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
+}
+
+.buttonE:active {
+	transform: scale(0.95);
+}
+
+.buttonE:focus {
+	outline: none;
+}
+
+.buttonE.ghost {
+	background-color: transparent;
+	border-color: #ffffff;
+}
+
