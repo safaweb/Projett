@@ -5,7 +5,7 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import HomePage from "./pages/homepage/HomePage";
 import Profile from "./pages/profile/Profile";
-import EventsList from "./pages/EventsList/EventsList";
+// import EventsList from "./pages/EventsList/EventsList";
 import EventPage from "./pages/EventPage/EventPage";
 
 import Home from "./Admins/AdminPages/home/Home";
@@ -19,22 +19,24 @@ import New from "./Admins/AdminPages/new/New";
 import { userInputs } from "./Admins/formSource";
 
 import { useContext } from "react";
-import OrganisateurPage from "./pages/organisateurPage/OrganisateurPage";
+import homeOrg from "./Organisateur/OrganisateurPages/home/HomeOrg";
 import MyEvents from "./Organisateur/OrganisateurPages/Event/Event";
-// import { DarkModeContext } from "./components/context/darkModeContext";
+import EventsList from "./pages/EventsList/EventsList";
 
-// import { Switch, Router } from "react-router-dom";
+
 import DemandeOrganisateur from './Admins/AdminPages/Organisateur/DemandeOrganisateur';
 import Param from './pages/profile/Param';
+import HomeOrg from "./Organisateur/OrganisateurPages/home/HomeOrg";
+import ProfileO from "./Organisateur/OrganisateurPages/profile/ProfileO"
 
 function App() {
-  // const { darkMode } = useContext(DarkModeContext);
+
 
   return (
     <BrowserRouter >
       <Routes>
         <Route path="/" exact element={<HomePage />} />
-        <Route path="/CreateEvent" exact element={<EventsList />} />
+        {/* <Route path="/CreateEvent" exact element={<EventsList />} /> */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/Profile" exact element={<Profile />} />
@@ -81,15 +83,18 @@ function App() {
 
 
         <Route path="/organisateur/">
-          <Route index element={<OrganisateurPage />} />
+          <Route index element={<HomeOrg />} />
           <Route path="Event/">
             <Route index element={<MyEvents />} />
             <Route path=":Events" element={<Single />} />
-            <Route
-              path="new"
+            {/* <Route
+              path="CreateEvent"
               element={<New inputs={userInputs} title="Add New User" />}
-            />
+            /> */}
+            {/* <Route path="CreateEvent" element={<EventsList/>} /> */}
+            <Route path="CreateEvent" exact element={<EventsList />} />
           </Route>
+          <Route path="ProfileOrganisateur" exact element={<ProfileO />}/>
         </Route>
       </Routes>
     </BrowserRouter>

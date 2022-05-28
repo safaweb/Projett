@@ -1,4 +1,4 @@
-.body {
+.bodyE {
   margin: 0px auto;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -31,15 +31,15 @@
  align-items: center;
 }
 
-.containern {
+.containernn {
 	background-color: #fff;
 	border-radius: 10px;
-	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-		0 10px 10px rgba(0, 0, 0, 0.22);
+	/* box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+		0 10px 10px rgba(0, 0, 0, 0.22); */
 	position: relative;
 	overflow: hidden;
  padding: 20px;
-	width: 900px;
+	/* width: 900px; */
 	max-width: 100%;
 	min-height: 450px;
  display: flex;
@@ -93,23 +93,26 @@ object-fit: cover;
 	font-weight: bold;
 	margin: 10px ;
  padding: 10px ;
-	color: rgba(91, 74, 239, 0.432);
+	color: #464a86;
 }
 
 .formE {
 	background-color: #ffffff;
- display: flex;
+ /* display: flex;
 	align-items: center;
 	justify-content: center;
-	flex-direction: column;
+	flex-direction: column; */
 	padding:  50px;
 	height: 100%;
- width: 450px;
+ width: 550px;
 	text-align: center;
+}
+.ligneE{
+
 }
 
 .inputE {
-	background-color: rgba(238, 238, 238, 0.301);
+	background-color: rgba(238, 238, 238, 0.649);
 	border: none;
 	padding: 10px;
  margin: 8px;
@@ -124,7 +127,7 @@ object-fit: cover;
 	border-radius: 30px;
 	border: 1px solid #eeecf0;
 	background-color: #ffffff;
-	color: rgba(91, 74, 239, 0.432);
+	color: #464a86;
 	font-size: 12px;
 	font-weight: bold;
 	padding: 10px 30px;
@@ -144,5 +147,4 @@ object-fit: cover;
 .buttonE.ghost {
 	background-color: transparent;
 	border-color: #ffffff;
-}
-
+} 

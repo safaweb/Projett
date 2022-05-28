@@ -31,23 +31,11 @@ const Datatable = () => {
       width: 250,
       renderCell: (params) => {
         return (
-          //   <div className="cellAction">
-          //     <Button to="/Organisateur/test" style={{ textDecoration: "none" }}>
-          //       Confirme
-          //     </Button>
-          //     <div
-          //       className="deleteButton"
-          //     //  onClick={() => handleDelete(params.row.id)}
-          //     >
-          //       Delete
-          //     </div>
-          //   </div>
           <Stack direction="row" spacing={2}>
             <Button
               onClick={() => handleSubmit(params.row._id)}
               variant="contained"
-              color="success"
-            >
+              color="success">
               Confirmer
             </Button>
             <Button variant="outlined" color="error">

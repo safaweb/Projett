@@ -14,7 +14,7 @@ exports.CreateTicket = async (req, res) => {
     // console.log(req.headers)
     const decodedToken = await jwt.verify(token, secret);
     const id_User = await decodedToken.id;
-
+    const id_Organisateur = await decodedToken.id;
     // const today= await date.now()
     try {
         let evt = await Event.findOne({ id_Event })
@@ -50,7 +50,8 @@ exports.CreateTicket = async (req, res) => {
                 TicketNum: updtevent.numberTickedispo[0],
                 Date,
                 id_Event,
-                id_User
+                id_User,
+                id_Organisateur
             })
             await NewTicket.save();
         }
@@ -64,8 +65,6 @@ exports.CreateTicket = async (req, res) => {
 // ****** Annulation ticket
 
 exports.AnnulationTicket = async (req, res) => {
-
-
     try {
         const ticket = await Ticket.findOneByIdAndDelete(req.body._id)
         const event = await Event.findByIdAndUpdate(ticket.id_Event, { NumPlaceRest: NumPlaceRest + ticket.NumPlaceReserve })
@@ -76,4 +75,32 @@ exports.AnnulationTicket = async (req, res) => {
         res.status(500).json({ msg: error.message })
     }
 
+}
+
+//**** Get ticket 
+
+exports.GetTicketinfo = async(req,res) => {
+
+    try {
+        const token = req.headers.authorization;
+        const decodedToken = jwt.verify(token, secret);
+        const id = decodedToken.id;
+        console.log(id)
+        const TICKET = await user.findById(id);
+        console.log(TICKET.TicketNum)
+        if (!TICKET) {
+            return res.status(403).json("TICKET id invalide!");
+        }
+
+        const userinfo = {
+            TicketNum: TICKET.TicketNum,
+            Date: TICKET.Date,
+            id_Event: TICKET.id_Event,
+            id_User: TICKET.id_User,
+            id_Organisateur: TICKET.id_Organisateur
+        }
+        return res.send(ticketinfo)
+    } catch (error) {
+        res.status(500).json({ msg: error.message })
+    }
 }

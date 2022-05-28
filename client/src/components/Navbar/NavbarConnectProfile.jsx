@@ -69,7 +69,7 @@ function NavbarConnect() {
             >
               <div className="dropdownP">
                 <NavDropdown.Item href="/Profile"> Profile</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">Paramétre</NavDropdown.Item>
+                <NavDropdown.Item href="/Profile/edit">Paramétre</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item onClick={logout}>Déconnexion</NavDropdown.Item>
               </div>

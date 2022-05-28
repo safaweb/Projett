@@ -1,14 +1,13 @@
 import "./single.scss";
-import NavbarConnectProfile from "../../components/Navbar/NavbarConnectProfile";
 // import Chart from "../../AdminComponents/chart/chart/Chart";
 // import List from "../../AdminComponents/chart/table/Table";
+// import Sidebar from "../../AdminComponents/sidebar/Sidebar";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import React, { useEffect } from "react";
-import { getuserinfo } from "../../redux/Action/UserAction";
-import { Link } from "react-router-dom";
+import { getuserinfo } from "../../../redux/Action/UserAction";
 
-const Profile = () => {
+const ProfileA = () => {
   const { Loading, users, error } = useSelector((state) => state.User_Select);
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
@@ -20,14 +19,12 @@ const Profile = () => {
 
   return (
     <div className="singleP">
-      <div className="singlP">{/* <Sidebar /> */}</div>
+      {/* <div className="singlP"><Sidebar /></div> */}
       <div className="singleContainerP">
-        <NavbarConnectProfile />
+        {/* <NavbarConnectProfile /> */}
         <div className="topP">
           <div className="leftP">
-            <Link to="/Profile/edit" style={{ textDecoration: "none", color: "black" }}>
             <div className="editButtonP">Modifier</div>
-            </Link>
             <h1 className="titleP">Information</h1>
             <div className="itemP">
               <img
@@ -63,4 +60,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfileA;

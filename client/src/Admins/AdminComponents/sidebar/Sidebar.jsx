@@ -7,8 +7,8 @@ import EventIcon from '@mui/icons-material/Event';
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
-import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
+// import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
+// import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -70,7 +70,7 @@ const Sidebar = () => {
           </li>
         </Link>
           <p className="title">USEFUL</p>
-          <Link to="/Admin/User/AcceptOrgan" style={{ textDecoration: "none" }}>
+          <Link to="/Admin/Organisateur/inv" style={{ textDecoration: "none" }}>
             <li>
               <StorefrontIcon className="icon" />
               <span>Organisateurs Demande</span>
@@ -80,7 +80,7 @@ const Sidebar = () => {
             <NotificationsNoneIcon className="icon" />
             <span>Notifications</span>
           </li>
-          <p className="title">SERVICE</p>
+          {/* <p className="title">SERVICE</p>
           <li>
             <SettingsSystemDaydreamOutlinedIcon className="icon" />
             <span>System Health</span>
@@ -92,7 +92,7 @@ const Sidebar = () => {
           <li>
             <SettingsApplicationsIcon className="icon" />
             <span>Settings</span>
-          </li>
+          </li> */}
           <p className="title">USER</p>
 
           <Link to="/Admin/ProfileAdmin" style={{ textDecoration: "none" }}>

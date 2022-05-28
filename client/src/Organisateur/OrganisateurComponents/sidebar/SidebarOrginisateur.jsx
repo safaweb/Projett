@@ -8,12 +8,13 @@ import InsertChartIcon from "@mui/icons-material/InsertChart";
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
-import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
+// import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
+// import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { logoutUser } from "../../../redux/Action/EventAction";
 // import { logoutUser } from "../../../redux/Action/EventAction";
 // import { DarkModeContext } from "../../../components/context/darkModeContext";
 
@@ -24,7 +25,7 @@ const SidebarOrginisateur = () => {
   const navigate = useNavigate();
 
   const logout = () => {
-    // dispatch(logoutUser());
+    dispatch(logoutUser());
     navigate("/login");
     //  <Navigate to="/" />;
   };
@@ -49,7 +50,7 @@ const SidebarOrginisateur = () => {
           <Link to="/Organisateur/User" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
-              <span>Users</span>
+              <span>Ticket</span>
             </li>
           </Link>
           <Link to="/Organisateur/Event" style={{ textDecoration: "none" }}>
@@ -60,7 +61,7 @@ const SidebarOrginisateur = () => {
           </Link>
           <Link to="/Organisateur/Admin" style={{ textDecoration: "none" }}>
           </Link>
-          <Link to="/Organisateur/Event" style={{ textDecoration: "none" }}>
+          <Link to="/Organisateur/Event/CreateEvent" style={{ textDecoration: "none" }}>
           <li>
               <EventIcon className="icon" />
             <span>Events</span>
@@ -75,7 +76,7 @@ const SidebarOrginisateur = () => {
             <NotificationsNoneIcon className="icon" />
             <span>Notifications</span>
           </li>
-          <p className="title">SERVICE</p>
+          {/* <p className="title">SERVICE</p>
           <li>
             <SettingsSystemDaydreamOutlinedIcon className="icon" />
             <span>System Health</span>
@@ -87,12 +88,14 @@ const SidebarOrginisateur = () => {
           <li>
             <SettingsApplicationsIcon className="icon" />
             <span>Settings</span>
-          </li>
+          </li> */}
           <p className="title">USER</p>
-          <li>
-            <AccountCircleOutlinedIcon className="icon" />
-            <span>Profile</span>
-          </li>
+          <Link to="/Organisateur/ProfileOrganisateur" style={{ textDecoration: "none" }}>
+            <li>
+              <AccountCircleOutlinedIcon className="icon" />
+              <span>Profile</span>
+            </li>
+          </Link>
           <li onClick={logout}>
             <ExitToAppIcon className="icon" />
             <span>Logout</span>
