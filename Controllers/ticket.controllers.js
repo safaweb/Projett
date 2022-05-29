@@ -1,5 +1,5 @@
 const Event = require('../models/Event');
-const ticket = require('../models/Ticket')
+const Ticket = require('../models/Ticket')
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
@@ -46,17 +46,19 @@ exports.CreateTicket = async (req, res) => {
             console.log(array2)
 
             const updtevent = await Event.findOneAndUpdate({ _id: id_Event }, { numberTickedispo: array2 })
-            let NewTicket = await new ticket({
+            let NewTicket = await new Ticket({
                 TicketNum: updtevent.numberTickedispo[0],
                 Date,
                 id_Event,
                 id_User,
                 id_Organisateur
             })
+            console.log(NewTicket)
             await NewTicket.save();
         }
         return res.send("ticke saved");
     } catch (error) {
+        console.log(error.response.data)
         res.status(500).json({ msg: error.message })
     }
 }
@@ -77,9 +79,44 @@ exports.AnnulationTicket = async (req, res) => {
 
 }
 
+
+//****** Get ticket
+exports.getTicket = async (req, res) => {
+    const TICK = []
+    const token = req.headers.authorization;
+    try {
+        const decodedToken = await jwt.verify(token, secret);
+        const id_User = await decodedToken.id;
+        let ticket = await Ticket.find({ id_User: id_User })
+        if (ticket) {
+            for (let pas = 0; pas < ticket.length; pas++) {
+                let id = ticket[pas].id_Event.toString();
+                const event = await Event.findOne({ id })
+                console.log(event)
+                if (event) {
+                    const ticketinfo = {
+                        ticketNum: ticket[pas].TicketNum,
+                        Eventname: event.Eventname,
+                        date: event.date,
+                        Prix: event.Prix
+                    };
+                    TICK.push(ticketinfo)
+                }
+
+            }
+            console.log(TICK)
+            return res.send(TICK)
+        }
+        console.log(ticket)
+        return res.send(ticket);
+    } catch (error) {
+        res.status(500).json({ msg: error.message })
+    }
+}
+
 //**** Get ticket 
 
-exports.GetTicketinfo = async(req,res) => {
+exports.GetTicketinfo = async (req, res) => {
 
     try {
         const token = req.headers.authorization;

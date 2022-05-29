@@ -1,4 +1,4 @@
-import { GET_EVENT, GET_EVENT_FAIL, GET_EVENT_SECCESS, GET_MY_EVENTS_FAIL, GET_ONE_EVENT, GET_ONE_EVENT_FAIL, GET_ONE_EVENT_SECCESS } from "../ActionTypes/ActionTypes"
+import { GET_EVENT, GET_EVENT_FAIL, GET_EVENT_SECCESS, GET_MY_EVENTS_FAIL} from "../ActionTypes/ActionTypes"
 import { GET_MY_EVENTS, GET_MY_EVENTS_SECCESS } from './../ActionTypes/ActionTypes';
 
 
@@ -20,8 +20,6 @@ const Event_Select = (state = initState, { type, payload }) => {
         event: [],
       }
 
-
-    
     case GET_EVENT_SECCESS:
     case GET_MY_EVENTS_SECCESS:
       return {

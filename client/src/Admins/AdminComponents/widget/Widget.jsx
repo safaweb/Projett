@@ -1,9 +1,9 @@
 import "./widget.scss";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import StorefrontIcon from '@mui/icons-material/Storefront';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import EventIcon from '@mui/icons-material/Event';
 
 const Widget = ({ type }) => {
   let data;
@@ -17,7 +17,7 @@ const Widget = ({ type }) => {
       data = {
         title: "USERS",
         isMoney: false,
-        link: "See all users",
+        link: "Voir les participents",
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -31,11 +31,11 @@ const Widget = ({ type }) => {
       break;
     case "order":
       data = {
-        title: "ORDERS",
+        title: "ORGANISATEURS",
         isMoney: false,
-        link: "View all orders",
+        link: "Voir les organisateurs",
         icon: (
-          <ShoppingCartOutlinedIcon
+          <StorefrontIcon
             className="icon"
             style={{
               backgroundColor: "rgba(218, 165, 32, 0.2)",
@@ -47,11 +47,11 @@ const Widget = ({ type }) => {
       break;
     case "earning":
       data = {
-        title: "EARNINGS",
+        title: "ADMINS",
         isMoney: true,
-        link: "View net earnings",
+        link: "Voir les admins",
         icon: (
-          <MonetizationOnOutlinedIcon
+          <AdminPanelSettingsIcon 
             className="icon"
             style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
           />
@@ -60,11 +60,11 @@ const Widget = ({ type }) => {
       break;
     case "balance":
       data = {
-        title: "BALANCE",
+        title: "EVENTS",
         isMoney: true,
-        link: "See details",
+        link: "Voir les événements",
         icon: (
-          <AccountBalanceWalletOutlinedIcon
+          <EventIcon
             className="icon"
             style={{
               backgroundColor: "rgba(128, 0, 128, 0.2)",
@@ -90,7 +90,7 @@ const Widget = ({ type }) => {
       <div className="right">
         <div className="percentage positive">
           <KeyboardArrowUpIcon />
-          {diff} %
+          {/* {diff} % */}
         </div>
         {data.icon}
       </div>

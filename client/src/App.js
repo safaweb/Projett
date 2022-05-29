@@ -3,7 +3,7 @@ import "./components/style/dark.scss";
 
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
-import HomePage from "./pages/homepage/HomePage";
+import HomePage from "./pages/homepage";
 import Profile from "./pages/profile/Profile";
 // import EventsList from "./pages/EventsList/EventsList";
 import EventPage from "./pages/EventPage/EventPage";
@@ -13,13 +13,13 @@ import User from "./Admins/AdminPages/User/User";
 import Organisateur from "./Admins/AdminPages/Organisateur/Organisateur";
 import Admin from "./Admins/AdminPages/Admin/Admin";
 import Event from "./Admins/AdminPages/Event/Event";
+import Ticket from "./Admins/AdminPages/Ticket/Ticket";
 import ProfileA from "./Admins/AdminPages/profile/ProfileA";
 import Single from "./Admins/AdminPages/single/Single";
 import New from "./Admins/AdminPages/new/New";
 import { userInputs } from "./Admins/formSource";
 
 import { useContext } from "react";
-import homeOrg from "./Organisateur/OrganisateurPages/home/HomeOrg";
 import MyEvents from "./Organisateur/OrganisateurPages/Event/Event";
 import EventsList from "./pages/EventsList/EventsList";
 
@@ -40,7 +40,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/Profile" exact element={<Profile />} />
-        <Route path="/Profile/edit" exact element={<Param/>} />
+        <Route path="/Profile/edit" exact element={<Param />} />
         <Route path="/event/:id" exact element={<EventPage />} />
         {/* render={(props) => */}
         {/* //   <EventPage {...props} />} */}
@@ -77,8 +77,16 @@ function App() {
               element={<New inputs={userInputs} title="Add New User" />}
             />
           </Route>
+          <Route path="Ticket">
+            <Route index element={<Ticket />} />
+            <Route path=":userId" element={<Single />} />
+            <Route
+              path="new"
+              element={<New inputs={userInputs} title="Add New User" />}
+            />
+          </Route>
           <Route path="ProfileAdmin" exact element={<ProfileA />}>
-        </Route>
+          </Route>
         </Route>
 
 
@@ -94,7 +102,7 @@ function App() {
             {/* <Route path="CreateEvent" element={<EventsList/>} /> */}
             <Route path="CreateEvent" exact element={<EventsList />} />
           </Route>
-          <Route path="ProfileOrganisateur" exact element={<ProfileO />}/>
+          <Route path="ProfileOrganisateur" exact element={<ProfileO />} />
         </Route>
       </Routes>
     </BrowserRouter>

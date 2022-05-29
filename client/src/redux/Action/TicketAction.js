@@ -1,4 +1,4 @@
-import { CREATE_TICKET, CREATE_TICKET_FAIL, CREATE_TICKET_SECCESS, GET_TICKET_INFO, GET_TICKET_INFO_FAIL, GET_TICKET_INFO_SECCESS } from "../ActionTypes/ActionTypes"
+import { CREATE_TICKET, CREATE_TICKET_FAIL, CREATE_TICKET_SECCESS, GET_TICKET, GET_TICKET_FAIL, GET_TICKET_INFO, GET_TICKET_INFO_FAIL, GET_TICKET_INFO_SECCESS, GET_TICKET_SECCESS } from "../ActionTypes/ActionTypes"
 import axios from "axios"
 
 
@@ -31,7 +31,29 @@ export const CreateTicket = (ticket, token) => async (dispatch) => {
 
 }
 
-export const getuserinfo  = (ticket, token) => async (dispatch) => {
+export const getTicket = (token) => async (dispatch) => {
+    dispatch({
+        type: GET_TICKET
+    });
+    try {
+        let res = await axios.get('/ticket/GetTicket', {
+            headers: {
+                'authorization': token
+            }
+        })
+        dispatch({
+            type: GET_TICKET_SECCESS,
+            payload: res.data
+        });
+    } catch (error) {
+        dispatch({
+            type: GET_TICKET_FAIL,
+            payload: error.response.data
+        })
+    }
+}
+
+export const getticketinfo = (ticket, token) => async (dispatch) => {
     console.log(token)
     dispatch({
         type: GET_TICKET_INFO,

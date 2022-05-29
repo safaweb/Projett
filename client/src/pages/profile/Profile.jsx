@@ -1,7 +1,7 @@
 import "./single.scss";
 import NavbarConnectProfile from "../../components/Navbar/NavbarConnectProfile";
 // import Chart from "../../AdminComponents/chart/chart/Chart";
-// import List from "../../AdminComponents/chart/table/Table";
+import List from "./Table";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import React, { useEffect } from "react";
@@ -56,7 +56,7 @@ const Profile = () => {
         </div>
         <div className="bottomP">
           <h1 className="titleP">Réservation</h1>
-          {/* <List /> */}
+          <List />
         </div>
       </div>
     </div>

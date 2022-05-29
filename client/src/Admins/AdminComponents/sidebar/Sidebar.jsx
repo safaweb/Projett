@@ -7,6 +7,7 @@ import EventIcon from '@mui/icons-material/Event';
 import SettingsApplicationsIcon from "@mui/icons-material/SettingsApplications";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
+import LocalActivityIcon from '@mui/icons-material/LocalActivity';
 // import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
 // import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
@@ -63,23 +64,25 @@ const Sidebar = () => {
             <span>Admins</span>
           </li>
           </Link>
-          <Link to="/Admin/Event" style={{ textDecoration: "none" }}>
-          <li>
-              <EventIcon className="icon" />
-            <span>Events</span>
-          </li>
-        </Link>
-          <p className="title">USEFUL</p>
           <Link to="/Admin/Organisateur/inv" style={{ textDecoration: "none" }}>
             <li>
               <StorefrontIcon className="icon" />
               <span>Organisateurs Demande</span>
             </li>
           </Link>
+          <p className="title">USEFUL</p>
+          <Link to="/Admin/Event" style={{ textDecoration: "none" }}>
           <li>
-            <NotificationsNoneIcon className="icon" />
-            <span>Notifications</span>
+              <EventIcon className="icon" />
+            <span>Events</span>
           </li>
+        </Link>
+          <Link to="/Admin/Ticket" style={{ textDecoration: "none" }}>
+          <li>
+            <LocalActivityIcon className="icon" />
+            <span>Ticket</span>
+          </li>
+          </Link>
           {/* <p className="title">SERVICE</p>
           <li>
             <SettingsSystemDaydreamOutlinedIcon className="icon" />

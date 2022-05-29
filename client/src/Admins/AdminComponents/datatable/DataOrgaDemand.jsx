@@ -28,7 +28,7 @@ const Datatable = () => {
     {
       field: "action",
       headerName: "Action",
-      width: 250,
+      width: 300,
       renderCell: (params) => {
         return (
           <Stack direction="row" spacing={2}>
@@ -53,10 +53,7 @@ const Datatable = () => {
       ) : (
         <div className="datatable">
           <div className="datatableTitle">
-            Tout Organisateur
-            <Link to="new" className="link">
-              New
-            </Link>
+            Les Demandes
           </div>
           <DataGrid
             className="datagrid"

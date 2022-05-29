@@ -13,28 +13,32 @@ import { getOrganStatus, getuserinfo } from "../../../redux/Action/UserAction";
 import SidebarOrginisateur from "../../OrganisateurComponents/sidebar/SidebarOrginisateur";
 import { logoutUser } from "../../../redux/Action/EventAction";
 import { useNavigate } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 
 
 const HomeOrg = () => {
-  const navigate = useNavigate();
-
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { LOADING, isActivate, err } = useSelector(
     (state) => state.OrganisateurReducer
   );
+  // const { LOADING, isActivate, err } = useSelector(
+  //   (state) => state.OrganisateurReducer
+  // );
   const { Loading, users, error } = useSelector((state) => state.User_Select);
+
   const logout = () => {
     dispatch(logoutUser());
     navigate("/login");
     //  <Navigate to="/" />;
   };
-  const token = localStorage.getItem("token");
-  useEffect(() => {
-    if (token) {
-      dispatch(getOrganStatus(token));
-      dispatch(getuserinfo(token));
-    }
-  }, []);
+  // const token = localStorage.getItem("token");
+  // useEffect(() => {
+  //   if (token) {
+  //     dispatch(getOrganStatus(token));
+  //     dispatch(getuserinfo(token));
+  //   }
+  // }, []);
   return (
     <div>
       {LOADING ? (
@@ -46,7 +50,7 @@ const HomeOrg = () => {
               {/* <Navbar /> */}
               <SidebarOrginisateur />
 
-              <div className="home">
+              <div className="homeorg">
                 {/* <Sidebar /> */}
                 <div className="homeContainer">
                   {/* <Navbar /> */}
@@ -78,12 +82,13 @@ const HomeOrg = () => {
               <button onClick={logout}>déconnexion</button>
 
             </div>
-          )}
+          )
+          }
         </div>
       )
       }
     </div>
-      );
+  );
 };
 
-      export default HomeOrg;
+export default HomeOrg;

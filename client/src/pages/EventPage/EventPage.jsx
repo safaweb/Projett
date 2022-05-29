@@ -8,6 +8,7 @@ import Navbar from "../../components/Navbar/NavbarH";
 import { Link, useParams } from "react-router-dom";
 import "./EventPage.scss";
 import { useState } from "react";
+import { Navigate } from "react-router-dom";
 
 function EventPage() {
   const { id } = useParams();
@@ -16,6 +17,7 @@ function EventPage() {
   const [optionsState, setoptionsState] = useState(0);
   const token = localStorage.getItem("token");
   const { Loading, event, error } = useSelector((state) => state.One_Event_Select);
+  const { loading, ticket, err } = useSelector((state) => state.Ticket_Select);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getoneevent(id));
@@ -32,6 +34,7 @@ function EventPage() {
         token
       )
     );
+
   };
   const SelectNumber = (event) => {
     event.preventDefault();
@@ -39,7 +42,7 @@ function EventPage() {
     console.log(numval[event.target.value]);
     setoptionsState(numval[event.target.value]);
   };
-
+  console.log(ticket)
   return (
     <div>
       <div className="homeContainerP">
@@ -47,10 +50,12 @@ function EventPage() {
         <div>
           {Loading ? (
             <h1> Loading</h1>
-          ) : (
+          ) : (ticket == "ticke saved") ? (
+            <Navigate to="/profile" />
+          ) :
             <div className="image-block">
               <figure>
-              
+
                 <img src={event.Eventimage} alt="" width="100%" height="100%" />
                 {/* <img
                   src="https://images.pexels.com/photos/1680140/pexels-photo-1680140.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
@@ -61,11 +66,11 @@ function EventPage() {
                     <h3>{event.Eventname}</h3>
 
                     <h6>
-                      Prix : {event.Prix}dt 
+                      Prix : {event.Prix}dt
                     </h6>
                     <h6>
                       Date : {event.date}
-                      </h6>
+                    </h6>
                   </div>
                   <p> {event.desc}</p>
                   <select
@@ -96,7 +101,7 @@ function EventPage() {
                 </figcaption>
               </figure>
             </div>
-          )}
+          }
         </div>
       </div>
     </div>

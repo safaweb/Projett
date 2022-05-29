@@ -59,9 +59,11 @@ export const getoneevent = (id) => async (dispatch) => {
 }
 export const logoutUser = () => dispatch => {
     localStorage.removeItem("token");
+    window.location.reload(true);
     dispatch({
         type: LOGOUT
     })
+
 }
 
 export const GetMyEvents = (token) => async (dispatch) => {

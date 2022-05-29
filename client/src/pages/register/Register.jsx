@@ -101,70 +101,69 @@ const Register = () => {
               <h1 className="titreR">Créez votre compte</h1>
             </div>
             <div className="FormR">
-                  <div>
               <div>
-                <label className="labelR"> Nom </label>
-                <input
-                  type="text"
-                  className="inputR"
-                  onChange={(e) => setUsername(e.target.value)}
+                <div>
+                  <label className="labelR"> Nom </label>
+                  <input
+                    type="text"
+                    className="inputR"
+                    onChange={(e) => setUsername(e.target.value)}
                   />
-                  </div>
-                  <div>
-                <label className="labelR"> Prénom </label>
-                <input
-                  type="text"
-                  className="inputR"
-                  onChange={(e) => setLastname(e.target.value)}
+                </div>
+                <div>
+                  <label className="labelR"> Prénom </label>
+                  <input
+                    type="text"
+                    className="inputR"
+                    onChange={(e) => setLastname(e.target.value)}
                   />
-                  </div>
-                  </div>
-                  <br/>
-                  <div>
-                  <div>
-                <label className="labelR"> Adresse e-mail </label>
-                <input
-                  type="email"
-                  className="inputR"
-                  onChange={(e) => setEmail(e.target.value)}
+                </div>
+              </div>
+              <br />
+              <div>
+                <div>
+                  <label className="labelR"> Adresse e-mail </label>
+                  <input
+                    type="email"
+                    className="inputR"
+                    onChange={(e) => setEmail(e.target.value)}
                   />
-                  </div>
-                  <div>
-                <label className="labelR"> Num téléphone </label>
-                <input
-                  type="text"
-                  className="inputR"
-                  onChange={(e) => setPhone(e.target.value)}
+                </div>
+                <div>
+                  <label className="labelR"> Num téléphone </label>
+                  <input
+                    type="text"
+                    className="inputR"
+                    onChange={(e) => setPhone(e.target.value)}
                   />
-                  </div>
-                  </div>
-                  <div className="motpassR">
-                  <div>
-                <label className="labelR"> Mot de pass </label>
-                <input
-                  type="password"
-                  className="inputR"
-                  onChange={(e) => setPassword(e.target.value)}
+                </div>
+              </div>
+              <div className="motpassR">
+                <div>
+                  <label className="labelR"> Mot de pass </label>
+                  <input
+                    type="password"
+                    className="inputR"
+                    onChange={(e) => setPassword(e.target.value)}
                   />
-                  </div>
-                    <div>
-                      <label className="labelR"> Confirmer mot de pass </label>
-                      <input
-                        type="password"
-                        className="inputR"
-                        // onChange={(e) => setPassword(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                  </div>
-                {/* {error ? (
-                  <div style={{ color: "red" }}> compte existe</div>
-                ) : (
-                  " "
-                )} */}
-              <div className="choiceR">
-                <FormControl sx={{ m: 3 }} Error={Error} variant="standard">
-                  <div className="choiceBR">
+                </div>
+                <div>
+                  <label className="labelR"> Confirmer mot de pass </label>
+                  <input
+                    type="password"
+                    className="inputR"
+                  // onChange={(e) => setPassword(e.target.value)}
+                  />
+                </div>
+              </div>
+            </div>
+            <div style={{ "textAlign": "center" }}>
+
+
+            </div>
+            <div className="choiceR">
+              <FormControl sx={{ m: 3 }} Error={Error} variant="standard">
+                <div className="choiceBR">
                   <FormLabel>
                     Choisissez le type de compte:
                   </FormLabel>
@@ -173,22 +172,22 @@ const Register = () => {
                     name="userRole"
                     value={value}
                     onChange={handleRadioChange}
-                    >
+                  >
                     <FormControlLabel
                       value="Client"
                       control={<Radio />}
                       label="Client"
-                      />
+                    />
                     <FormControlLabel
                       value="Organisateur"
                       control={<Radio />}
                       label="Organisateur"
-                      />
+                    />
                   </RadioGroup>
                 </div>
-                </FormControl>
-            <button className="buttonR"> Submit</button>
-              </div>
+              </FormControl>
+              <button className="buttonR"> Submit</button>
+            </div>
           </form>
         </div>
       )}
