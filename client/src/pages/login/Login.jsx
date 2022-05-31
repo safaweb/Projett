@@ -27,10 +27,10 @@ const Login = () => {
   return (
     <div className="bodyL" >
       {Loading ? (
-        <h1>
+        <h1 className="text" >
           {" "}
           <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
-        </h1>
+        </h1> 
       ) : token ? (
         users.UserRole == "Admin" ? (
           <Navigate to="/Admin" />

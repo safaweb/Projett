@@ -14,9 +14,9 @@
     flex-direction: column;
     justify-content: space-between;
 
-    .title {
+    .titleW {
       font-weight: bold;
-      font-size: 14px;
+      font-size: 18px;
       color: rgb(160, 160, 160);
     }
 
@@ -45,7 +45,9 @@
     }
 
     .icon {
-      font-size: 18px;
+      width: 30px;
+      height: 30px;
+      font-size: 30px;
       padding: 5px;
       border-radius: 5px;
       align-self: flex-end;

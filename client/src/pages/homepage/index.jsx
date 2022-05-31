@@ -20,10 +20,10 @@ function Index() {
   <div>
 
    {loading ? (
-    <h1>
-     {" "}
-     <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
-    </h1>
+       <h1 className="text" >
+         {" "}
+         <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
+       </h1> 
    ) : token ? (
     (user) ? (
      (user.User.UserRole == "Admin") ? (

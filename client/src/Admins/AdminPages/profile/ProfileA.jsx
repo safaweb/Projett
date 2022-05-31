@@ -51,10 +51,10 @@ const ProfileA = () => {
       <Chart aspect={3 / 1} title="User Spending ( Last 6 Months)" />
      </div> */}
         </div>
-        <div className="bottomP">
-          <h1 className="titleP">Réservation</h1>
+        {/* <div className="bottomP"> */}
+          {/* <h1 className="titleP">Réservation</h1> */}
           {/* <List /> */}
-        </div>
+        {/* </div> */}
       </div>
     </div>
   );

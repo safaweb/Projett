@@ -8,7 +8,10 @@ const secret = config.get('secret');
 
 
 exports.CreateEvent = async (req, res) => {
-  const { Eventname, date, EventType, NumPlaceTotal, NumPlaceRest, Prix, Eventimage, id_User } = req.body;
+  const { Eventname, date, EventType, NumPlaceTotal, NumPlaceRest, Prix, Eventimage } = req.body;
+  token = await req.headers.authorization;
+  const decodedToken = jwt.verify(token, secret);
+  const id = decodedToken.id;
   let numberTickedispo = []
   try {
     for (let index = 1; index <= NumPlaceTotal; index++) {
@@ -24,7 +27,7 @@ exports.CreateEvent = async (req, res) => {
       numberTickedispo,
       Prix,
       Eventimage,
-      id_User
+      id_User: id
     })
     await NewEvent.save();
     return res.send(NewEvent);
@@ -63,7 +66,7 @@ exports.getevent = async (req, res) => {
 //********* get event by id***** */
 
 exports.getoneevent = async (req, res) => {
-  
+
   try {
     let myevent = await Event.findById(req.params.id)
     console.log(req.params)

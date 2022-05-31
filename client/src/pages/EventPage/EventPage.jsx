@@ -49,7 +49,10 @@ function EventPage() {
         <Navbar />
         <div>
           {Loading ? (
-            <h1> Loading</h1>
+            <h1 className="text" >
+              {" "}
+              <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
+            </h1> 
           ) : (ticket == "ticke saved") ? (
             <Navigate to="/profile" />
           ) :
@@ -69,7 +72,7 @@ function EventPage() {
                       Prix : {event.Prix}dt
                     </h6>
                     <h6>
-                      Date : {event.date}
+                        Date : {event.date}
                     </h6>
                   </div>
                   <p> {event.desc}</p>

@@ -7,16 +7,17 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { getclient } from "../../../redux/Action/UserAction";
+import {  getticketinfo } from "../../../redux/Action/TicketAction";
 
 const Datatable = () => {
-  const { Loading, users, error } = useSelector((state) => state.User_Select);
-  const dispatch = useDispatch();
-  let [Data, setData] = useState(users);
-  const token = localStorage.getItem("token");
 
+  const { Loading, ticket, error } = useSelector((state) => state.Ticket_Select);
+  const dispatch = useDispatch()
+  const token = localStorage.getItem("token");
   useEffect(() => {
-    dispatch(getclient(token));
-  }, []);
+    dispatch(getticketinfo(token))
+  }, [])
+//  let [Data, setData] = useState(users);
 
   // console.log(users)/
   //console.log(Data)
@@ -45,13 +46,16 @@ const Datatable = () => {
   return (
     <div>
       {Loading ? (
-        <h1 className="text"> loading ...</h1>
+        <h1 className="text">         
+          {" "}
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
+        </h1>
       ) : (
         <div className="datatable">
-          <div className="datatableTitle">Tout Client</div>
+          <div className="datatableTitle">Tout Vos Tickets</div>
           <DataGrid
             className="datagrid"
-            rows={users}
+              rows={ticket}
             getRowId={(row) => row._id}
             columns={userColumns.concat(actionColumn)}
             pageSize={9}

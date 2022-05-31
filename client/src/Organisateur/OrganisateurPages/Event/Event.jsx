@@ -1,12 +1,12 @@
 import "./Event.scss"
-import Sidebar from "../../OrganisateurComponents/sidebar/SidebarOrginisateur"
+import SidebarOrginisateur  from "../../OrganisateurComponents/sidebar/SidebarOrginisateur"
 // import Navbar from "../../OrganisteurComponents/navbar/Navbar"
 import DataEvent from "../../OrganisateurComponents/datatable/DataEvent"
 
 const MyEvents = () => {
   return (
     <div className="list">
-      <Sidebar/>
+      <SidebarOrginisateur />
       <div className="listContainer">
         {/* <Navbar/> */}
         <DataEvent/>

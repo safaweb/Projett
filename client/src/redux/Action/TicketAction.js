@@ -53,14 +53,13 @@ export const getTicket = (token) => async (dispatch) => {
     }
 }
 
-export const getticketinfo = (ticket, token) => async (dispatch) => {
-    console.log(token)
+export const getticketinfo = (token) => async (dispatch) => {
     dispatch({
         type: GET_TICKET_INFO,
     });
     try {
-        const res = await axios.post("/ticket/GetTicketinfo",
-            ticket,
+        const res = await axios.get("/ticket/GetTicketinfo",
+            
             {
                 headers: {
                     'authorization': token

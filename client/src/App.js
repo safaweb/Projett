@@ -27,6 +27,7 @@ import EventsList from "./pages/EventsList/EventsList";
 import DemandeOrganisateur from './Admins/AdminPages/Organisateur/DemandeOrganisateur';
 import Param from './pages/profile/Param';
 import HomeOrg from "./Organisateur/OrganisateurPages/home/HomeOrg";
+import Tickets from "./Organisateur/OrganisateurPages/Ticket/Ticket";
 import ProfileO from "./Organisateur/OrganisateurPages/profile/ProfileO"
 
 function App() {
@@ -92,17 +93,13 @@ function App() {
 
         <Route path="/organisateur/">
           <Route index element={<HomeOrg />} />
+            <Route path="Tickets" element={<Tickets />} />
           <Route path="Event/">
             <Route index element={<MyEvents />} />
             <Route path=":Events" element={<Single />} />
-            {/* <Route
-              path="CreateEvent"
-              element={<New inputs={userInputs} title="Add New User" />}
-            /> */}
-            {/* <Route path="CreateEvent" element={<EventsList/>} /> */}
             <Route path="CreateEvent" exact element={<EventsList />} />
           </Route>
-          <Route path="ProfileOrganisateur" exact element={<ProfileO />} />
+            <Route path="ProfileOrganisateur" exact element={<ProfileO />} />
         </Route>
       </Routes>
     </BrowserRouter>

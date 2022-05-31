@@ -11,11 +11,8 @@ const SchemaTicket = new Schema({
    id_User: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User"
-   },
-   id_Organisateur: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Organisateur"
    }
+
 })
 
 module.exports = mongoose.model('ticket', SchemaTicket)

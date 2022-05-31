@@ -1,74 +1,48 @@
 import "./widget.scss";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
-import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import StorefrontIcon from '@mui/icons-material/Storefront';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import EventIcon from '@mui/icons-material/Event';
+import LocalActivityIcon from '@mui/icons-material/LocalActivity';
 
-const Widget = ({ type }) => {
+
+const Widget = ({ type, amount }) => {
   let data;
 
   //temporary
-  const amount = 100;
-  const diff = 20;
+  // const amount = 10;
+  //  const diff = 20;
 
   switch (type) {
-    case "user":
+
+    case "event":
       data = {
-        title: "USERS",
+        title: "EVENTS",
         isMoney: false,
-        link: "See all users",
+        link: "Voir les événements",
         icon: (
-          <PersonOutlinedIcon
+          <EventIcon
             className="icon"
             style={{
-              color: "crimson",
-              backgroundColor: "rgba(255, 0, 0, 0.2)",
+              backgroundColor: "rgba(128, 68, 0, 0.2)",
+              color: "rgb(128, 68, 0)",
             }}
           />
         ),
       };
       break;
-    case "order":
+    case "ticket":
       data = {
-        title: "ORDERS",
+        title: "TICKETS",
         isMoney: false,
-        link: "View all orders",
+        link: "Voir les tickets",
         icon: (
-          <ShoppingCartOutlinedIcon
+          <LocalActivityIcon
             className="icon"
             style={{
               backgroundColor: "rgba(218, 165, 32, 0.2)",
               color: "goldenrod",
-            }}
-          />
-        ),
-      };
-      break;
-    case "earning":
-      data = {
-        title: "EARNINGS",
-        isMoney: true,
-        link: "View net earnings",
-        icon: (
-          <MonetizationOnOutlinedIcon
-            className="icon"
-            style={{ backgroundColor: "rgba(0, 128, 0, 0.2)", color: "green" }}
-          />
-        ),
-      };
-      break;
-    case "balance":
-      data = {
-        title: "BALANCE",
-        isMoney: true,
-        link: "See details",
-        icon: (
-          <AccountBalanceWalletOutlinedIcon
-            className="icon"
-            style={{
-              backgroundColor: "rgba(128, 0, 128, 0.2)",
-              color: "purple",
             }}
           />
         ),
@@ -81,7 +55,7 @@ const Widget = ({ type }) => {
   return (
     <div className="widget">
       <div className="leftt">
-        <span className="title">{data.title}</span>
+        <span className="titleW">{data.title}</span>
         <span className="counter">
           {data.isMoney && "$"} {amount}
         </span>
@@ -90,7 +64,7 @@ const Widget = ({ type }) => {
       <div className="right">
         <div className="percentage positive">
           <KeyboardArrowUpIcon />
-          {diff} %
+          {/* {diff} % */}
         </div>
         {data.icon}
       </div>

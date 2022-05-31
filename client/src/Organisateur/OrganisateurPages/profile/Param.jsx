@@ -19,7 +19,10 @@ const Param = () => {
   return (
     <div>
       {Loading ? (
-        <h1>Loading</h1>
+        <h1 className="text" >
+          {" "}
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
+        </h1> 
       ) : (
         <div>
           {/* <Navbar /> */}

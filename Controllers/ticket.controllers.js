@@ -50,10 +50,9 @@ exports.CreateTicket = async (req, res) => {
                 TicketNum: updtevent.numberTickedispo[0],
                 Date,
                 id_Event,
-                id_User,
-                id_Organisateur
+                id_User
             })
-            console.log(NewTicket)
+            // console.log(NewTicket)
             await NewTicket.save();
         }
         return res.send("ticke saved");
@@ -118,25 +117,33 @@ exports.getTicket = async (req, res) => {
 
 exports.GetTicketinfo = async (req, res) => {
 
+    let TICK = []
+
     try {
-        const token = req.headers.authorization;
+        token = await req.headers.authorization;
         const decodedToken = jwt.verify(token, secret);
         const id = decodedToken.id;
-        console.log(id)
-        const TICKET = await user.findById(id);
-        console.log(TICKET.TicketNum)
-        if (!TICKET) {
-            return res.status(403).json("TICKET id invalide!");
+        const MyEvent = await Event.find({ "id_User": id })
+        if (MyEvent) {
+            for (let pas = 0; pas < MyEvent.length; pas++) {
+                // console.log(MyEvent[pas])
+                let id_MyEvent = await (MyEvent[pas]._id).toString();
+                console.log(id_MyEvent)
+                let ticket = await Ticket.find({ "id_Event": id_MyEvent })
+                if (ticket) {
+                    console.log(ticket)
+                    TICK.push(ticket)
+
+                }
+            }
         }
 
-        const userinfo = {
-            TicketNum: TICKET.TicketNum,
-            Date: TICKET.Date,
-            id_Event: TICKET.id_Event,
-            id_User: TICKET.id_User,
-            id_Organisateur: TICKET.id_Organisateur
-        }
-        return res.send(ticketinfo)
+
+
+        return res.send(TICK)
+
+
+
     } catch (error) {
         res.status(500).json({ msg: error.message })
     }

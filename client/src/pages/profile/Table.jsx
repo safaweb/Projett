@@ -22,7 +22,10 @@ const List = () => {
 
   return (<div>
     {Loading ?
-      <h1>loading</h1> : (
+      <h1 className="text" >
+        {" "}
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
+      </h1> : (
 
         <TableContainer component={Paper} className="table">
           <Table sx={{ minWidth: 650 }} aria-label="simple table">

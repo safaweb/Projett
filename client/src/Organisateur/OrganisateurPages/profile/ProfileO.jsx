@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import React, { useEffect } from "react";
 import { getuserinfo } from "../../../redux/Action/UserAction";
+import SidebarOrginisateur from "../../OrganisateurComponents/sidebar/SidebarOrginisateur";
 
 const ProfileA = () => {
   const { Loading, users, error } = useSelector((state) => state.User_Select);
@@ -19,7 +20,7 @@ const ProfileA = () => {
 
   return (
     <div className="singleP">
-      {/* <div className="singlP"><Sidebar /></div> */}
+      <SidebarOrginisateur />
       <div className="singleContainerP">
         {/* <NavbarConnectProfile /> */}
         <div className="topP">
@@ -47,15 +48,9 @@ const ProfileA = () => {
               </div>
             </div>
           </div>
-          {/* <div className="right">
-      <Chart aspect={3 / 1} title="User Spending ( Last 6 Months)" />
-     </div> */}
-        </div>
-        <div className="bottomP">
-          <h1 className="titleP">Réservation</h1>
-          {/* <List /> */}
         </div>
       </div>
+
     </div>
   );
 };

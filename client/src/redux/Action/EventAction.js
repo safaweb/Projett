@@ -3,12 +3,19 @@ import { CREATE_EVENT, CREATE_EVENT_SECCESS, CREATE_EVENT_FAIL, GET_EVENT, GET_E
 import axios from "axios"
 import { GET_MY_EVENTS_SECCESS } from './../ActionTypes/ActionTypes';
 
-export const CreateEvent = (NewEvent) => async (dispatch) => {
+export const CreateEvent = (NewEvent,token) => async (dispatch) => {
     dispatch({
         type: CREATE_EVENT
     });
     try {
-        let res = await axios.post('/event/CreateEvent', NewEvent);
+        let res = await axios.post('/event/CreateEvent', NewEvent,
+
+            {
+                headers: {
+                    'authorization': token
+                }
+            }
+        );
         dispatch({
             type: CREATE_EVENT_SECCESS,
             payload: res.data

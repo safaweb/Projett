@@ -9,11 +9,13 @@ import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import Navbar from "../../OrganisteurComponents/navbar/Navbar";
-import { getOrganStatus, getuserinfo } from "../../../redux/Action/UserAction";
 import SidebarOrginisateur from "../../OrganisateurComponents/sidebar/SidebarOrginisateur";
 import { logoutUser } from "../../../redux/Action/EventAction";
 import { useNavigate } from 'react-router-dom';
 import { Navigate } from "react-router-dom";
+import { getOrganStatus, getuserinfo, statorgan } from "../../../redux/Action/UserAction";
+
+import "./single.scss";
 
 
 const HomeOrg = () => {
@@ -22,43 +24,46 @@ const HomeOrg = () => {
   const { LOADING, isActivate, err } = useSelector(
     (state) => state.OrganisateurReducer
   );
-  // const { LOADING, isActivate, err } = useSelector(
-  //   (state) => state.OrganisateurReducer
-  // );
-  const { Loading, users, error } = useSelector((state) => state.User_Select);
+  const { LOading, stats, erro } = useSelector((state) => state.Stat_Select);
+  // console.log(users.Admin_Num)
+  useEffect(() => {
+    if (token) {
+      dispatch(statorgan(token));
+    }
+  }, []);
+  const { loading, users, error } = useSelector((state) => state.User_Select);
 
   const logout = () => {
     dispatch(logoutUser());
+    localStorage.removeItem("token")
     navigate("/login");
     //  <Navigate to="/" />;
   };
-  // const token = localStorage.getItem("token");
-  // useEffect(() => {
-  //   if (token) {
-  //     dispatch(getOrganStatus(token));
-  //     dispatch(getuserinfo(token));
-  //   }
-  // }, []);
+  const token = localStorage.getItem("token");
+  useEffect(() => {
+    if (token) {
+      dispatch(getOrganStatus(token));
+      dispatch(getuserinfo(token));
+    }
+  }, []);
   return (
     <div>
-      {LOADING ? (
-        <p3>Loading</p3>
+      {loading ? (
+        <h1 className="text" >
+          {" "}
+          <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" />
+        </h1> 
       ) : (
         <div>
-          {isActivate ? (
+          {isActivate && token ? (
             <div>
               {/* <Navbar /> */}
-              <SidebarOrginisateur />
-
               <div className="homeorg">
-                {/* <Sidebar /> */}
+                <SidebarOrginisateur />
                 <div className="homeContainer">
-                  {/* <Navbar /> */}
                   <div className="widgets">
-                    <Widget type="user" />
-                    <Widget type="order" />
-                    <Widget type="earning" />
-                    <Widget type="balance" />
+                    <Widget type="event" amount={stats.Event_Num} />
+                    <Widget type="ticket" amount={stats.Ticket_Num} />
                   </div>
                   <div className="charts">
                     <Featured />
@@ -71,18 +76,26 @@ const HomeOrg = () => {
                 </div>
               </div>
             </div>
-          ) : (
-            <div style={{ textAlign: "center" }}>
-              Bonjour {users.Username}
-              <br />
-              Votre compte n'est pas activée
-              <br />
-              Vouz pouvez contacte l'adminisatration de site
-              <br />
-              <button onClick={logout}>déconnexion</button>
-
+          ) : (!isActivate && token) ? (
+            <div className="singleP">
+              <div className="singleContainerP">
+                <div className="topP">
+                  <div className="leftP">
+                    <div style={{ textAlign: "center" }}>
+                      <h1> Bonjour {users.Username} </h1>
+                      <br />
+                      <h2>Votre compte n'est pas activée</h2>
+                      <br />
+                      <h2>Vouz pouvez contacte l'adminisatration de site</h2>
+                      <br />
+                      <h3>.</h3>
+                      <button onClick={logout} className="editButtonPP" >déconnexion</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          )
+          ) : <Navigate to="/login" />
           }
         </div>
       )

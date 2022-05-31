@@ -33,9 +33,9 @@ const SidebarOrginisateur = () => {
   return (
     <div className="sidebar">
       <div className="top">
-          <span className="logo">Organisateur</span>
+        <span className="logo">Organisateur</span>
       </div>
-      <br/>
+      <br />
       <div className="center">
         <ul>
           <p className="title">MAIN</p>
@@ -44,10 +44,10 @@ const SidebarOrginisateur = () => {
             <Link to="/Organisateur" style={{ textDecoration: "none" }}>
               <span>Dashboard</span>
             </Link>
-            
+
           </li>
           <p className="title">LISTS</p>
-          <Link to="/Organisateur/User" style={{ textDecoration: "none" }}>
+          <Link to="/Organisateur/Tickets" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
               <span>Ticket</span>
@@ -59,14 +59,12 @@ const SidebarOrginisateur = () => {
               <span>My Events</span>
             </li>
           </Link>
-          <Link to="/Organisateur/Admin" style={{ textDecoration: "none" }}>
-          </Link>
           <Link to="/Organisateur/Event/CreateEvent" style={{ textDecoration: "none" }}>
-          <li>
+            <li>
               <EventIcon className="icon" />
-            <span>Events</span>
-          </li>
-        </Link>
+              <span>Events</span>
+            </li>
+          </Link>
           <p className="title">USEFUL</p>
           <li>
             <InsertChartIcon className="icon" />

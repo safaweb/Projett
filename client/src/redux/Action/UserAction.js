@@ -8,7 +8,7 @@ import {
     GET_USER_INFO, GET_USER_INFO_SECCESS, GET_USER_INFO_FAIL,
     GET_ORGAN_STATUS_SECCESS, GET_ORGAN_STATUS_FAIL, GET_DEMANDE_ORGANIZATEUR,
     GET_DEMANDE_ORGANIZATEUR_FAIL, GET_DEMANDE_ORGANIZATEUR_SECCESS, ACCEPT_ORGANISATEUR,
-    ACCEPT_ORGANISATEUR_SECCESS, ACCEPT_ORGANISATEUR_FAIL
+    ACCEPT_ORGANISATEUR_SECCESS, ACCEPT_ORGANISATEUR_FAIL, GET_STAT_ADMIN, GET_STAT_ADMIN_SECCESS, GET_STAT_ADMIN_FAIL, GET_STAT_ORGAN, GET_STAT_ORGAN_SECCESS, GET_STAT_ORGAN_FAIL
 } from "../ActionTypes/ActionTypes"
 import { useNavigate } from 'react-router-dom';
 
@@ -253,6 +253,65 @@ export const AcceptOrganisateur = (id) => async (dispatch) => {
         dispatch({
             type: ACCEPT_ORGANISATEUR_FAIL,
             payload: error.response.data
+        })
+    }
+
+}
+//stat Admin
+
+export const statadmin = (token) => async (dispatch) => {
+    console.log(token)
+    dispatch({
+        type: GET_STAT_ADMIN,
+    });
+    try {
+        const res = await axios.get("/user/statAdmin",
+
+            {
+                headers: {
+                    'authorization': token
+                }
+            }
+        )
+        dispatch({
+            type: GET_STAT_ADMIN_SECCESS,
+            payload: res.data
+        })
+
+
+    } catch (error) {
+        dispatch({
+            type: GET_STAT_ADMIN_FAIL,
+            payload: error
+        })
+    }
+
+}
+
+// stat organisateur
+export const statorgan = (token) => async (dispatch) => {
+    console.log(token)
+    dispatch({
+        type: GET_STAT_ORGAN,
+    });
+    try {
+        const res = await axios.get("/user/statOrgan",
+            {
+                headers: {
+                    'authorization': token
+                }
+            }
+        )
+        dispatch({
+            type: GET_STAT_ORGAN_SECCESS,
+            payload: res.data
+        })
+
+
+    } catch (error) {
+        dispatch({
+            type: GET_STAT_ORGAN_FAIL,
+            payload: error
         })
     }
 

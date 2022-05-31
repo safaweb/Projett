@@ -1,10 +1,12 @@
 const bc = require('bcrypt')
 const user = require('../models/User');
+const Event = require('../models/Event')
+const Ticket = require('../models/Ticket')
 var jwt = require('jsonwebtoken');
 const config = require('config');
 const secret = config.get('secret');
 const nodemailer = require('nodemailer');
-const { findByIdAndUpdate } = require('../models/User');
+const { findByIdAndUpdate, count } = require('../models/User');
 const transporter = nodemailer.createTransport({
   service: "hotmail",
   auth: {
@@ -379,7 +381,7 @@ exports.AcceptOrgan = async (req, res) => {
 
 exports.EditUser = async (req, res) => {
   try {
-    id = await req.headers.authorization;
+    token = await req.headers.authorization;
     const decodedToken = jwt.verify(token, secret);
     const id = decodedToken.id;
     user.findByIdAndUpdate(id,
@@ -400,5 +402,77 @@ exports.EditUser = async (req, res) => {
     return res.status(200).json("ok")
   } catch (error) {
     res.status(400).json({ msg: error.message })
+  }
+}
+
+
+// stat admin 
+exports.statAdmin = async (req, res) => {
+  try {
+
+    token = await req.headers.authorization;
+    const decodedToken = jwt.verify(token, secret);
+    const id = decodedToken.id;
+    const Event_Num = await Event.count()
+    const Ticket_Num = await Ticket.count()
+
+    const admin = await user.find({ "UserRole": "Admin" })
+    console.log(admin.length)
+    Admin_Num = await admin.length
+
+    const organ = await user.find({ "UserRole": "Organisateur" })
+    Organ_Num = await organ.length
+
+    let client = await user.find({ "UserRole": "Client" })
+    Client_Num = await client.length;
+
+
+    const User_Num = await user.count()
+
+    const Stat = {
+      Event_Num: Event_Num,
+      Ticket_Num: Ticket_Num,
+      Client_Num: Client_Num,
+      Admin_Num: Admin_Num,
+      Organ_Num: Organ_Num,
+      User_Num: User_Num,
+    }
+
+    return res.send(Stat)
+
+  } catch (error) {
+    res.status(400).json({ msg: error.message })
+  }
+}
+
+// stat Organisateur
+exports.statOrgan = async (req, res) => {
+  const TICK = []
+
+  try {
+    token = await req.headers.authorization;
+    const decodedToken = jwt.verify(token, secret);
+    const id = decodedToken.id;
+    const MyEvent = await Event.find({ "id_User": id })
+    if (MyEvent) {
+      for (let pas = 0; pas < MyEvent.length; pas++) {
+        console.log(MyEvent[pas]._id)
+        let id_MyEvent = await (MyEvent[pas]._id).toString();
+        let ticket = await Ticket.find({ id_Event: id_MyEvent })
+        TICK.push(ticket)
+      }
+    }
+    const Event_Num = await MyEvent.length
+
+    const Stats = {
+      Event_Num: Event_Num,
+      Ticket_Num: TICK.length,
+    }
+
+    return res.send(Stats)
+
+  } catch (error) {
+
+    res.status(500).json({ msg: error.message })
   }
 }

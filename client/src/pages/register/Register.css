@@ -9,7 +9,7 @@
   align-items: center;
 		flex-direction: column; 
   width:100%;
-  background-image: url("../../../public/1.PNG");
+  /* background-image: url("../../../public/1.PNG"); */
 	height: 100vh;
 }
 

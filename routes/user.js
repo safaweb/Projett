@@ -1,6 +1,6 @@
 const express = require('express');
 const { register, login, getClient, getuserinfo, getOrganisateur,
-    getAdmin, registerOrganisateur, registerAdmin, getOrgNonAcc, AcceptOrgan ,getOrgstat
+    getAdmin, registerOrganisateur, registerAdmin, getOrgNonAcc, AcceptOrgan ,getOrgstat,statAdmin, statOrgan
 } = require('../Controllers/user.controllers');
 const auth = require('../Middleware/auth');
 const isAdmin = require('../Middleware/isAdmin');
@@ -21,6 +21,9 @@ router.post('/registerAdmin', isAdmin, registerAdmin);
 router.get('/getOrgNonAcc', getOrgNonAcc)
 router.put('/AcceptOrgan/:id', AcceptOrgan)
 router.get('/getOrgstat', getOrgstat)
+
+router.get('/statAdmin', statAdmin)
+router.get('/statOrgan', statOrgan)
 
 
 
